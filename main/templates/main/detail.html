@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- ======= Portfolio Details Section ======= -->
+<section id="portfolio-details" class="portfolio-details">
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <div class="col-lg-8">
+                <div class="portfolio-details-slider swiper">
+                    <div class="swiper-wrapper align-items-center">
+
+                        {% comment %} <div class="swiper-slide">
+                            <img src="{% static 'img/portfolio/portfolio-details-1.jpg' %}" alt="">
+                        </div> {% endcomment %}
+
+
+                        {% comment %} <div class="swiper-slide">
+                            <img src="{% static 'img/portfolio/portfolio-details-3.jpg' %}" alt="">
+                        </div> {% endcomment %}
+                        {%if story.image%}
+                        <div class="swiper-slide">
+                            <img src="{{story.image.url}}" alt="img">
+                        </div>
+                        {%else%}
+
+                        <div class="swiper-slide">
+                            <img src="{% static 'img/portfolio/portfolio-details-2.jpg' %}" alt="">
+                        </div>
+                        {%endif%}
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="portfolio-info">
+                    <h3>{{story.title}}</h3>
+                    <ul>
+                        <li><strong>Writer</strong> : {{story.writer}}</li>
+                        <li><strong>Body</strong> : {{story.body}}</li>
+                        <li><strong>생성시간</strong> : {{story.created_at}}</li>
+                        <li><strong>수정시간</strong> : {{story.updated_at}}</li>
+                    </ul>
+                    <br>
+        
+                    <ul>
+                    {% if story.writer == request.user %}
+                        <a class="btn btn-dark" href="{% url 'main:edit_story' story.id %}">수정하기</a>
+                        <a class="btn btn-dark" href="{% url 'main:delete' story.id %}">삭제하기</a>
+                        <a class="btn btn-dark" href="{% url 'main:list' %}">목록</a>
+                    {% endif%}
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Portfolio Details Section -->
+
+{%endblock%}

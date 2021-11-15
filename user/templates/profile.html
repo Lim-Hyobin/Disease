@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+body {
+    background: #eee
+}
+
+.card {
+    border: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.card:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #ffd5d9;
+    transform: scaleY(1);
+    transition: all 0.5s;
+    transform-origin: bottom
+}
+
+.card:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #fe7f5d;
+    transform: scaleY(0);
+    transition: all 0.5s;
+    transform-origin: bottom
+}
+
+.card:hover::after {
+    transform: scaleY(1)
+}
+
+.fonts {
+    font-size: 11px
+}
+
+.social-list {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    padding: 0
+}
+
+.social-list li {
+    padding: 10px;
+    color: #fe7f5d;
+    font-size: 19px
+}
+
+.buttons button:nth-child(1) {
+    border: 1px solid #fe7f5d !important;
+    color: #fff;
+    height: 40px
+}
+
+.buttons button:nth-child(1):hover {
+    border: 1px solid #fe7f5d !important;
+    color: #fff;
+    height: 40px;
+    background-color: #fe7f5d;
+    
+}
+
+.buttons button:nth-child(2) {
+    border: 1px solid #8E24AA !important;
+    background-color: #8E24AA;
+    color: #fff;
+    height: 40px
+}
+
+.bg-secondary p-1 px-4 rounded text-white{
+    background-color: #fe7f5d;
+}
+
+.modify-info {
+    color:#fe7f5d;
+}
+
+.modify-info:hover {
+    color:#fff;
+}
+
+</style>
+
+<section id="portfolio-d">
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-7">
+            <div class="card p-3 py-4">
+                <div class="text-center">
+                    {%if profile.image%}
+                     <img src="{{profile.image.url}}" width="100" class="rounded-circle"> 
+                     {%endif%}
+                    </div>
+                
+                <div class="text-center mt-3"> <span class="bg-secondary p-1 px-4 rounded text-white">회원정보</span>
+                    <h5 class="mt-2 mb-0"><br>
+                        <div class="signup_input_container">
+                            <div class="signup_input_title">아이디 : </div>
+                            <input readonly type="text" class="signup" name="username" value="{{profile.username}}">
+                        </div><br>
+                        
+                        <div class="signup_input_container">
+                            <div class="signup_input_title">닉네임 : </div><input readonly type="text" class="signup" name="nickname" value="{{profile.nickname}}">
+                        </div><br>
+                        <div class="signup_input_container">
+                            <div class="signup_input_title">이름 : </div>
+                            <input readonly type="text" class="signup" name="name" value=" {{profile.name}}">
+                        </div><br>
+                        <div class="signup_input_container">
+                            <div class="signup_input_title">질병 : </div>
+                            <input readonly type="text" class="signup" name="disease" value="{{profile.disease}}">
+                        </div><br>                        
+                        </div>
+                        {%endif%}
+                    <div class="buttons"> <button class="btn btn-outline-primary px-4"><a class="modify-info" href="{%url 'user:edit' profile.id %}">개인정보 수정하기</a></button></div>
+                    
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+{%endblock%}

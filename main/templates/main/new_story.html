@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+.confirmBtn {
+  margin-top: 10px;
+  width: 100px;
+  color: white;
+  background-color: #ff8668;
+  padding: 6px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+</style>
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+        <form action="{%url 'main:create'%}" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            <p>제목 : <input type="text" name="title" required></p>
+            <p>사진 : <input type="file" name="image"></p>
+            <p>내용 : <textarea style="width: 100%;" type="text" name="body" id="" cols="50" rows="10"
+                    required></textarea></p>
+            <button class="confirmBtn" type="submit">제출</button>
+        </form>
+        </div>
+    </section>
+{%endblock%}

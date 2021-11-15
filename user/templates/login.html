@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+  <style>
+    /* signup_container*/
+
+    .signup_container {
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      margin-top: 40px;
+      width: 80%;
+      text-align: center;
+    }
+
+    .signup_title {
+      font-weight: 100;
+      margin-top: 30px;
+      font-size: 30px;
+      margin-bottom: 50px;
+    }
+
+    .signup_input_container {
+      display: block;
+      margin: 0 auto;
+ 
+
+      margin-bottom: 20px;
+    }
+
+    .signup_input_title {
+      border:none;
+      width: 200px;
+      text-align: left;
+      
+      font-size: 12px;
+      margin-bottom: 10px;
+  }
+
+    .signup {
+      width: 200px;
+      height: 40px;
+      background-color: white;
+      border: 1px solid lightgray;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 5px;
+      font-size: 10px;
+    }
+
+    #hobbyBtn {
+      margin-top: 10px;
+      width: 100px;
+      color: white;
+      background-color: #4ccd97;
+      padding: 6px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    #confirmBtn {
+      margin-top: 10px;
+      width: 150px;
+      color: white;
+      background-color: #0b8a00;
+      padding: 6px;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+    .sign {
+      margin-top: 10px;
+      width: 200px;
+      color: white;
+      background-color: #0b8a00;
+      padding: 6px;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+  </style>
+<section>
+ <div class="container" data-aos="zoom-in" data-aos-delay="100">
+    <div class="signup_container">
+      <form action="{%url 'user:login' %}" method="POST">
+        {%csrf_token%}
+        <div class="signup_title">로그인</div>
+
+        <div class="signup_input_container">
+          <input style="background:transparent;" class="signup_input_title" disabled value="아이디"><br>
+
+          <input type="text" class="signup" name="username" placeholder="아이디">
+        </div>
+        <br>
+        <div class="signup_input_container">
+          <input style="background:transparent;" class="signup_input_title" disabled value="비밀번호"><br>
+
+          <input type="password" class="signup" name="password" placeholder="비밀번호">
+
+        </div>
+        <br>
+        <button id="confirmBtn" type="submit">완료</button>
+        <a class="sign" href="{%url 'user:signup' %}">회원가입</a>
+      </form>
+    </div>
+  </div>
+</section>
+{%endblock%}
