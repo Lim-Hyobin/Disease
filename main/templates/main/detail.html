@@ -44,12 +44,14 @@
                         <li><strong>수정시간</strong> : {{story.updated_at}}</li>
                     </ul>
                     <br>
+                    <h4>{{story.ingredients}}</h4>
         
                     <ul>
                     {% if story.writer == request.user %}
                         <a class="btn btn-dark" href="{% url 'main:edit_story' story.id %}">수정하기</a>
                         <a class="btn btn-dark" href="{% url 'main:delete' story.id %}">삭제하기</a>
                         <a class="btn btn-dark" href="{% url 'main:list' %}">목록</a>
+                        <a class="btn btn-dark" href="{% url 'recipe:matching' request.user.id%}">레시피</a>
                     {% endif%}
                     </ul>
                 </div>

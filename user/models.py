@@ -1,7 +1,6 @@
 from django.db import models
 
 # Create your models here.
-from django.db import models
 from django.contrib.auth.models import User,BaseUserManager,AbstractBaseUser,PermissionsMixin
 from django.dispatch import receiver
 from django.db.models.signals import post_save
@@ -43,14 +42,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     name=models.CharField(max_length=30, default='')
     #이름
     email = models.EmailField(max_length=30,default='')
-    #이메일
+    #질병
     CHOICE_DISEASE=(
         ('당뇨병','당뇨병'),
         ('고혈압','고혈압'),
         
     )
     disease=models.CharField(max_length=50, choices=CHOICE_DISEASE,default='')
-
     
     objects=UserManager()
     is_active = models.BooleanField(default=True)

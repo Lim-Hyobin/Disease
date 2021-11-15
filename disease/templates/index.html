@@ -19,7 +19,7 @@
         </h7></p>
         
       {% if user.is_authenticated %}
-      <button type="button"  class="btn" > <a href="{%url 'main:showmain' %}" > 입장하기</a></button> 
+      <button type="button"  class="btn" > <a href="{%url 'main:list' %}" > 입장하기</a></button> 
       <button type="button"  class="btn"> <a href="{%url 'user:logout' %}" > 로그아웃</a></button>
       {% else %}
         

@@ -28,4 +28,7 @@ urlpatterns = [
     path('main/',main, name='main'),
     path('showmain/',include('main.urls')),
     path('user/',include('user.urls')),
+    path('deeprunning/', include('deeprunning.urls')),
+    path('recipe/', include('recipe.urls')),
+
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

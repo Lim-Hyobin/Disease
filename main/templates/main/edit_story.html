@@ -20,6 +20,7 @@
             {%csrf_token%}
             <p>제목 : <input value="{{story.title}}" type="text" name="title" required></p>
             <p>사진 : <input value="{{story.image}}" type="file" name="image">{{story.image}}</p>
+            <p>재료 : <input value="{{story.ingredients}}" type="text" name="ingredients" required></p>
             <p>내용 : <textarea style="width: 100%;" type="text" name="body" id="" cols="50" rows="10"
                     required>{{story.body}}</textarea></p>
             <button class="confirmBtn" type="submit">제출</button>
