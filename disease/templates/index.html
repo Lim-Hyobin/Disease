@@ -2,7 +2,9 @@
 {% load static %}
 {% block content %}
 
-<section id="hero" class="d-flex flex-column justify-content-center">
+<div><img src= "{% static 'img/main_image.jpg' %}" alt = "Main_Image" style="max-width: 100%; height: auto;" </div>
+
+<section id="hero" class="d-flex flex-column justify-content">
   <style>
     .btn{
       padding: none;
@@ -12,11 +14,9 @@
   </style>
     <div class="container" data-aos="zoom-in" data-aos-delay="100">
 
-      <h1 ><p class="head-title" >만성질환을 고려한 <span class="typed" data-typed-items=", 식단 추천 "></span></p></h1>
+      <h1 ><p class="head-title" >🥗만성질환을 고려한 <span class="typed" data-typed-items=", 식단 추천!🥩 "></span></p></h1>
       
       <br>
-      <p><h7 style="line-height: 3rem;">(가제)<br>
-        </h7></p>
         
       {% if user.is_authenticated %}
       <button type="button"  class="btn" > <a href="{%url 'main:list' %}" > 입장하기</a></button> 
