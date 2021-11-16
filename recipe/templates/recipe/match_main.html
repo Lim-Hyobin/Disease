@@ -27,7 +27,7 @@
                     <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                         <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"></i></div>
                         <h2 class="fs-4 fw-bold">
- 
+                            {% if story.ingredients == request.ingredients %}
                             {%for recipe in recipes %}
                             
                                 {{recipe.title}}</h2>
@@ -36,6 +36,7 @@
                                 {{recipe.recipe}}<br></p>
                                 
                             {% endfor %}
+                            {% endif %}
  
                     </div>
                 </div>

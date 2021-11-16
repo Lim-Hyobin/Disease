@@ -12,10 +12,9 @@ from django.db.models import Q
 
 def matching(request,id):
     recipes = Recipe.objects.all()
-    ing=Recipe.objects.get(id=id)
     di= User.objects.get(id=id)
-    key = str(ing.ingredients)
-    other=Q(Story.objects.filter(ingredients__exact=key)) & Q(Recipe.objects.filter(disease=di.disease))
+    key = str(Recipe.ingredients)
+    other = Q(Story.objects.filter(ingredients__exact=key)) & Q(Recipe.objects.filter(disease=di.disease))
 
     if other:
         return render(request,'recipe/match_main.html', {"recipes":recipes})

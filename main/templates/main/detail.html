@@ -12,14 +12,6 @@
                 <div class="portfolio-details-slider swiper">
                     <div class="swiper-wrapper align-items-center">
 
-                        {% comment %} <div class="swiper-slide">
-                            <img src="{% static 'img/portfolio/portfolio-details-1.jpg' %}" alt="">
-                        </div> {% endcomment %}
-
-
-                        {% comment %} <div class="swiper-slide">
-                            <img src="{% static 'img/portfolio/portfolio-details-3.jpg' %}" alt="">
-                        </div> {% endcomment %}
                         {%if story.image%}
                         <div class="swiper-slide">
                             <img src="{{story.image.url}}" alt="img">

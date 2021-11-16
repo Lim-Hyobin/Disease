@@ -48,7 +48,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         ('고혈압','고혈압'),
         
     )
-    disease=models.CharField(max_length=50, choices=CHOICE_DISEASE,default='')
+    disease = models.CharField(max_length=50, choices=CHOICE_DISEASE,default='')
     
     objects=UserManager()
     is_active = models.BooleanField(default=True)

@@ -11,6 +11,5 @@ class Story(models.Model):
     title = models.CharField(max_length=50)
     image = models.ImageField(upload_to="story/",null=True, blank=True)
     ingredients = models.CharField(max_length=50)
-    body = models.TextField()
     created_at = models.DateTimeField(auto_now=False)
     updated_at = models.DateTimeField(auto_now=True)
