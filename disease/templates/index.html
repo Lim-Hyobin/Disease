@@ -2,7 +2,15 @@
 {% load static %}
 {% block content %}
 
-<div><img src= "{% static 'img/main_image.jpg' %}" alt = "Main_Image" style="max-width: 100%; height: auto;" </div>
+<style>
+.img {
+  max-width: 100%;
+  height: auto !important;
+  display: block;
+}
+</style>
+
+<img src= "{% static 'img/main_image.jpg' %}" alt = "Main_Image" class="img">
 
 <section id="hero" class="d-flex flex-column justify-content">
   <style>
@@ -19,7 +27,7 @@
       <br>
         
       {% if user.is_authenticated %}
-      <button type="button"  class="btn" > <a href="{%url 'main:list' %}" > 입장하기</a></button> 
+      <button type="button"  class="btn" > <a href="{%url 'main:list' %}" > 서비스 시작</a></button>
       <button type="button"  class="btn"> <a href="{%url 'user:logout' %}" > 로그아웃</a></button>
       {% else %}
         

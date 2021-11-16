@@ -13,11 +13,20 @@
   margin-bottom: 30px;
   font-weight: bold;
 }
+.container{
+        margin: auto;
+        width: 50%;
+        background: white;
+        padding: 50px;
+        vertical-align: middle;
+}
 </style>
+
     <section id="portfolio-details" class="portfolio-details">
         <div class="container">
         <form action="{%url 'main:create'%}" method="post" enctype="multipart/form-data">
             {%csrf_token%}
+            <h4 style="margin:0; padding: 10px 0; font-weight: bold; font-size: 23px">식재료 이미지 업로드하기 </h4><br>
             <p>제목 : <input type="text" name="title" required></p>
             <p>사진 : <input type="file" name="image"></p>
             <p>내용 : <textarea style="width: 100%;" type="text" name="body" id="" cols="50" rows="10"
