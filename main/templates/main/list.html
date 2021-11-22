@@ -32,6 +32,7 @@
                     <ul>
                         <h3> <a style="color:black;" href="{% url 'main:detail' story.id %}">{{story.title}}</a></h3>
                         <li><strong>Writer</strong> : {{story.writer}}</li>
+                        <li><strong>식재료</strong> : {{story.ingredients}}</li>
                         <li><strong>생성시간</strong> : {{story.created_at}}</li>
                         <li><strong>수정시간</strong> : {{story.updated_at}}</li>
                     </ul>

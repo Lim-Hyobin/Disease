@@ -14,9 +14,11 @@ def matching(request,id):
     recipes = Recipe.objects.all()
     di= User.objects.get(id=id)
     key = str(Recipe.ingredients)
-    other = Q(Story.objects.filter(ingredients__exact=key)) & Q(Recipe.objects.filter(disease=di.disease))
 
-    if other:
-        return render(request,'recipe/match_main.html', {"recipes":recipes})
-    else:
-        return render(request, 'recipe/match_error.html')
+    return render(request,'recipe/match_main.html', {"recipes":recipes})
+    # other = Story.objects.filter(Q(ingredients__exact=key & Recipe.objects.filter(disease=di.disease))
+
+    #if other:
+       
+    #else:
+    #    return render(request, 'recipe/match_error.html')
