@@ -105,5 +105,3 @@ def update_profile(request,user_id):
         profile.disease=request.POST['disease']
         profile.save()
     return redirect('user:profile',profile.id)
-        
-      
