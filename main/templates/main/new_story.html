@@ -2,26 +2,133 @@
 {% load static %}
 {% block content %}
 <style>
-.confirmBtn {
-  margin-top: 10px;
-  width: 100px;
-  color: white;
-  background-color: #ff8668;
-  padding: 6px;
-  border: none;
-  border-radius: 8px;
-  margin-bottom: 30px;
-  font-weight: bold;
-}
-.container{
-        margin: auto;
-        width: 50%;
-        background: white;
-        padding: 50px;
-        vertical-align: middle;
-}
-</style>
 
+#imageCanvas{
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events:none;
+}
+
+#img_id{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.post_form_container{
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+
+.post_form{
+    padding: 40px;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    margin: 0 0 10px;
+}
+
+.post_form .top_title{
+    margin: 0 10px 40px;
+    font-weight: 400;
+    font-size: 30px;
+    text-align: center;
+}
+
+.post_form .preview{
+    margin-bottom: 30px;
+}
+
+.post_form .preview .upload{
+    max-width: 300px;
+    height: 300px;
+    border: 1px solid #e6e6e6;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.plus_icon{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    border: 1px solid #0b8a00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.plus_icon span{
+    position: absolute;
+    display: block;
+    width: 2px;
+    height: 30px;
+    background: #0b8a00;
+}
+.plus_icon span:nth-child(2){
+    transform:rotate(90deg);
+}
+
+.post_form p{
+    margin-bottom: 20px;
+}
+
+.post_form input[type=text]{
+    width: 100%;
+
+    background: 0 0;
+    border: 1px solid #efefef;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #262626;
+    font-size: 20px;
+    padding: 7px 8px 7px;
+}
+.post_form input[type=file]{
+    width: 100%;
+    background: 0 0;
+    border: 1px solid #efefef;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #262626;
+    font-size: 14px;
+    padding: 7px 8px 7px;
+}
+
+.post_form textarea{
+    width: 100%;
+    background: 0 0;
+    border: 1px solid #efefef;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #262626;
+    font-size: 14px;
+    padding: 7px 8px 7px;
+}
+
+.submit_btn {
+    background: #0b8a00;
+    border-color: #0b8a00;
+    color: #fff;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 28px;
+    outline: none;
+    width: 100%;
+    padding: 0;
+    margin-top: 10px;
+}
+
+</style>
+<!--
     <section id="portfolio-details" class="portfolio-details">
         <div class="container">
         <form action="{%url 'main:create'%}" method="post" enctype="multipart/form-data">
@@ -35,4 +142,83 @@
         </form>
         </div>
     </section>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+<body>
+
+    <div id="main_container">
+
+        <div class="post_form_container">
+            <form action="{%url 'main:create'%}" method="post" enctype="multipart/form-data" class="post_form">
+                {%csrf_token%}
+                <div class="top_title">
+                    NEW POST
+                </div>
+                <p>
+                    <input type="text" class="title" name="title" required>
+                </p>
+                <div class="preview">
+                    <div class="upload">
+                        <div class="post_btn">
+                            <div class="plus_icon">
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <p>식재료 이미지 추가</p>
+                            <canvas id="imageCanvas"></canvas>
+                            <!--<p><img id="img_id" src="#" style="width: 300px; height: 300px; object-fit: cover" alt="thumbnail"></p>-->
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    <input type="file" name="image" id="id_image" required="required">
+                </p>
+                <p>
+                    <textarea name="content" id="text_field" cols="50" rows="5" placeholder="140자 까지 등록 가능합니다."></textarea>
+                </p>
+                <input class="submit_btn" type="submit" value="저장">
+            </form>
+        </div>
+    </div>
+
+
+</section>
+
+<script>
+       var fileInput  = document.querySelector( "#id_image" ),
+           button     = document.querySelector( ".input-file-trigger" );
+        
+       // Show image
+       fileInput.addEventListener('change', handleImage, false);
+       var canvas = document.getElementById('imageCanvas');
+       var ctx = canvas.getContext('2d');
+
+
+        function handleImage(e){
+           var reader = new FileReader();
+           reader.onload = function(event){
+               var img = new Image();
+               // var imgWidth =
+               img.onload = function(){
+                   canvas.width = 300;
+                   canvas.height = 300;
+                   ctx.drawImage(img,0,0,300,300);
+               };
+               img.src = event.target.result;
+               // img.width = img.width*0.5
+               // canvas.height = img.height;
+           };
+           reader.readAsDataURL(e.target.files[0]);
+       }
+
+</script>
+</body>
+</html>
 {%endblock%}
