@@ -31,10 +31,12 @@
                 <div class="portfolio-info">
                     <h3>{{story.title}}</h3>
                     <ul>
-                        <li><strong>식재료</strong> : {{story.content}}</li>
                         <li><strong>Writer</strong> : {{story.writer}}</li>
-                        <li><strong>생성시간</strong> : {{story.created_at}}</li>
-                        <li><strong>수정시간</strong> : {{story.updated_at}}</li>
+                        <li><strong>생성</strong> : {{story.created_at}}</li>
+                        <li><strong>수정</strong> : {{story.updated_at}}</li>
+                        <br><hr>
+                        <li><strong>✔ 인식 식재료 ✔</strong></li><br>
+                            {{story.ingredients}}
                     </ul>
                     <br>
         

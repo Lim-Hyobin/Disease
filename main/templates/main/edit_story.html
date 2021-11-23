@@ -134,7 +134,12 @@
         <form action="{%url 'main:update' story.id %}" method="post" enctype="multipart/form-data">
             {%csrf_token%}
             <p>제목 : <input value="{{story.title}}" type="text" name="title" required></p>
-            <p>사진 : <input value="{{story.image}}" type="file" name="image">{{story.image}}</p>
+
+            <p>인식 식재료 :</p> <input type="file" name="image" onchange="fileCheck(this)">
+            {% if story.image %}
+                <p>{{story.image_name}}</p>
+            {% endif %}
+            
             <p>재료 : <input value="{{story.ingredients}}" type="text" name="ingredients" required></p>
             <button class="confirmBtn" type="submit">제출</button>
         </form>
