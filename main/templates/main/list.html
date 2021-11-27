@@ -3,22 +3,18 @@
 {% block content %}
 
 <section id="portfolio-details"  class="portfolio-details">
-    
+
     <header class="py-5">
         <div class="container px-lg-5">
             <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
                 <div class="m-4 m-lg-5">
                     <h1 class="display-5 fw-bold">식재료 입력하기</h1><br><br>
-                    
-                {% if user.is_authenticated %}
-                    <a class="btn btn-primary btn-lg" href="{% url 'main:new_story' %}" style="background-color:#fe7f5d; border-color:white;">식재료 입력하기</a>
-                {%else%}
-                    <a class="btn btn-primary btn-lg" href="{% url 'user:login' %}" style="background-color:#fe7f5d; border-color:white;">식재료 입력하기</a>
-                    <a class="btn btn-primary btn-lg" href="{% url 'user:login' %}" style="background-color:#fe7f5d; border-color:white;">내 식재료 모아보기</a>
 
-                {%endif%}
+                    <a class="btn btn-primary btn-lg" href="{% url 'main:new_story' %}" style="background-color:#fe7f5d; border-color:white;"> 식재료 사진 업로드하기 </a>
+                    <br><br>
+                    <a class="btn btn-primary btn-lg" href=# style="background-color:#fe7f5d; border-color:white;">스마트 냉장고에서 불러오기</a>
 
-                    
+
                 </div>
             </div>
         </div>
@@ -37,13 +33,13 @@
                         <li><strong>수정시간</strong> : {{story.updated_at}}</li>
                     </ul>
          </div>
-           
-           
+
+
      {%endfor%}
 
-        
+
 
     </div>
-    
+
 </section>
 {%endblock%}

@@ -9,37 +9,37 @@
         top: 0;
         pointer-events:none;
     }
-    
+
     #img_id{
         position: absolute;
         left: 0;
         top: 0;
     }
-    
+
     .post_form_container{
         max-width: 550px;
         margin: 0 auto;
     }
-    
-    
+
+
     .post_form{
         padding: 40px;
         background-color: #fff;
         border: 1px solid #e6e6e6;
         margin: 0 0 10px;
     }
-    
+
     .post_form .top_title{
         margin: 0 10px 40px;
         font-weight: 400;
         font-size: 30px;
         text-align: center;
     }
-    
+
     .post_form .preview{
         margin-bottom: 30px;
     }
-    
+
     .post_form .preview .upload{
         max-width: 300px;
         height: 300px;
@@ -50,7 +50,7 @@
         align-items: center;
         position: relative;
     }
-    
+
     .plus_icon{
         width: 80px;
         height: 80px;
@@ -61,8 +61,8 @@
         justify-content: center;
         align-items: center;
     }
-    
-    
+
+
     .plus_icon span{
         position: absolute;
         display: block;
@@ -73,14 +73,14 @@
     .plus_icon span:nth-child(2){
         transform:rotate(90deg);
     }
-    
+
     .post_form p{
         margin-bottom: 20px;
     }
-    
+
     .post_form input[type=text]{
         width: 100%;
-    
+
         background: 0 0;
         border: 1px solid #efefef;
         border-radius: 3px;
@@ -99,7 +99,7 @@
         font-size: 14px;
         padding: 7px 8px 7px;
     }
-    
+
     .post_form textarea{
         width: 100%;
         background: 0 0;
@@ -110,7 +110,7 @@
         font-size: 14px;
         padding: 7px 8px 7px;
     }
-    
+
     .submit_btn {
         background: #0b8a00;
         border-color: #0b8a00;
@@ -126,7 +126,7 @@
         padding: 0;
         margin-top: 10px;
     }
-    
+
 </style>
 <!--
     <section id="portfolio-details" class="portfolio-details">
@@ -139,7 +139,7 @@
             {% if story.image %}
                 <p>{{story.image_name}}</p>
             {% endif %}
-            
+
             <p>재료 : <input value="{{story.ingredients}}" type="text" name="ingredients" required></p>
             <button class="confirmBtn" type="submit">제출</button>
         </form>
@@ -180,9 +180,10 @@
                     </div>
                 </div>
                 <p>
-                    <input value="{{story.image}}" type="file" name="image" id="id_image" >{{story.image}}
-                    <textarea value="{{story.ingredients}}" name="ingredients" id="text_field" cols="50" rows="5" placeholder="식재료 입력 (추후 수정)" required></textarea>
-
+                    <input value="{{story.image}}" type="file" name="image" id="id_image" required="required">{{story.image}}
+                </p>
+                <p>
+                    <textarea value="{{story.ingredients}}" name="ingredients" id="text_field" cols="50" rows="5" placeholder="140자 까지 등록 가능합니다." required></textarea>
                 </p>
                 <input class="submit_btn" type="submit" value="저장">
             </form>
@@ -195,7 +196,7 @@
 <script>
        var fileInput  = document.querySelector( "#id_image" ),
            button     = document.querySelector( ".input-file-trigger" );
-        
+
        // Show image
        fileInput.addEventListener('change', handleImage, false);
        var canvas = document.getElementById('imageCanvas');

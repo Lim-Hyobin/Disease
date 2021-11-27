@@ -10,6 +10,5 @@ class Story(models.Model):
     writer = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     image = models.ImageField(upload_to="story/",null=True, blank=True)
-    ingredients = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now=False)
     updated_at = models.DateTimeField(auto_now=True)

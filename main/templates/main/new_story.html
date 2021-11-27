@@ -161,9 +161,6 @@
                 <div class="top_title">
                     NEW POST
                 </div>
-                <p>
-                    <input type="text" class="title" name="title" placeholder="제목" required>
-                </p>
                 <div class="preview">
                     <div class="upload">
                         <div class="post_btn">
@@ -181,7 +178,8 @@
                     <input type="file" name="image" id="id_image" required="required">
                 </p>
                 <p>
-                    <textarea name="ingredients" id="text_field" cols="50" rows="5" placeholder="식재료 입력 (추후 수정)"></textarea>
+                    <!--<textarea name="ingredients" id="text_field" cols="50" rows="5" placeholder="식재료 입력 (추후 수정)"></textarea>-->
+                    <input type="text" class="title" name="title" placeholder="내용" required>
                 </p>
                 <input class="submit_btn" type="submit" value="저장">
             </form>
@@ -194,7 +192,7 @@
 <script>
        var fileInput  = document.querySelector( "#id_image" ),
            button     = document.querySelector( ".input-file-trigger" );
-        
+
        // Show image
        fileInput.addEventListener('change', handleImage, false);
        var canvas = document.getElementById('imageCanvas');

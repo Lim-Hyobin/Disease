@@ -24,7 +24,6 @@ def create(request):
     new_story.title = request.POST["title"]
     new_story.writer = request.user
     new_story.image = request.FILES.get("image")
-    new_story.ingredients = request.POST["ingredients"]
     new_story.created_at = timezone.now()
     new_story.updated_at = timezone.now()
     new_story.save()
@@ -43,10 +42,9 @@ def edit_story(request,id):
 
 def update(request, id):
     update_story=Story.objects.get(id=id)
-    update_story.title = request.POST["title"]
+    update_story.title = request.POST["stitle"]
     update_story.writer = request.user
     update_story.image = request.FILES.get("image")
-    update_story.ingredients = request.POST["ingredients"]
     update_story.updated_at = timezone.now()
     update_story.save()
     return redirect("main:detail",update_story.id)
