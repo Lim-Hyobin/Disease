@@ -180,10 +180,9 @@
                     </div>
                 </div>
                 <p>
-                    <input value="{{story.image}}" type="file" name="image" id="id_image" required="required">{{story.image}}
-                </p>
-                <p>
-                    <textarea value="{{story.ingredients}}" name="ingredients" id="text_field" cols="50" rows="5" placeholder="140자 까지 등록 가능합니다." required></textarea>
+                    <input value="{{story.image}}" type="file" name="image" id="id_image" >{{story.image}}
+                    <textarea value="{{story.ingredients}}" name="ingredients" id="text_field" cols="50" rows="5" placeholder="식재료 입력 (추후 수정)" required></textarea>
+
                 </p>
                 <input class="submit_btn" type="submit" value="저장">
             </form>

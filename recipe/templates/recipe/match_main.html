@@ -22,24 +22,25 @@
         <div class="row gx-lg-5">
             <h3>나의 레시피 <br><br></h3>
             
+            {%for recipe_list in recipe_list %}
             <div class="col-lg-6 col-xxl-4 mb-5">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                         <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"></i></div>
                         <h2 class="fs-4 fw-bold">
  
-                            {%for recipe in other %}
-                            
-                                {{recipe.title}}</h2>
+                                {{recipe_list.title}}</h2>
+                                <p>관련 질병 : {{recipe_list.disease}}<br>
+                                    식재료 : {{recipe_list.ingredients}}<br></p>
+                                <hr>
                                 <p class="mb-0">
-                                {{recipe.ingredients}}<br>
-                                {{recipe.recipe}}<br></p>
                                 
-                            {% endfor %}
- 
+                                {{recipe_list.recipe}}<br></p>
+
                     </div>
                 </div>
             </div>
+            {% endfor %}
 
 </section>
 {% endblock %}
